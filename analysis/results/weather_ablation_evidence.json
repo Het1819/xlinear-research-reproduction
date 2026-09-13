@@ -1,0 +1,64 @@
+{
+  "experiment": {
+    "dataset": "Weather",
+    "task": "multivariate forecasting",
+    "seq_len": 96,
+    "pred_len": 96,
+    "channels": 21,
+    "seed": 2025,
+    "device": "CPU",
+    "windows_evaluated": 10432
+  },
+  "local_results": {
+    "XLinear": {
+      "mse": 0.1509373039,
+      "mae": 0.198953107,
+      "parameters": 345980,
+      "training_runtime_seconds": 547.22,
+      "epochs": 20,
+      "best_epoch": 17
+    },
+    "XLinear-ES": {
+      "mse": 0.1768046767,
+      "mae": 0.2164115608,
+      "parameters": 181088,
+      "training_runtime_seconds": 282.53,
+      "epochs": 20,
+      "best_epoch": 10
+    },
+    "XLinear-GT": {
+      "mse": 0.1537747383,
+      "mae": 0.2020685524,
+      "parameters": 321404,
+      "training_runtime_seconds": 563.81,
+      "epochs": 20,
+      "best_epoch": 10
+    }
+  },
+  "paper_results": {
+    "XLinear": {
+      "mse": 0.149,
+      "mae": 0.198
+    },
+    "XLinear-ES": {
+      "mse": 0.175,
+      "mae": 0.216
+    },
+    "XLinear-GT": {
+      "mse": 0.153,
+      "mae": 0.2
+    }
+  },
+  "ablation_effects": {
+    "es_mse_degradation_vs_full_percent": 17.137826191156698,
+    "es_mae_degradation_vs_full_percent": 8.775160168772848,
+    "gt_mse_degradation_vs_full_percent": 1.8798761649272955,
+    "gt_mae_degradation_vs_full_percent": 1.5659194505567586,
+    "gt_improvement_over_es_mse_percent": 13.025638704725509,
+    "gt_improvement_over_es_mae_percent": 6.627653507501538
+  },
+  "environment_deviations": [
+    "num_workers=0 for Windows compatibility",
+    "CPU execution rather than authors' GPU hardware"
+  ]
+}

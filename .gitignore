@@ -1,0 +1,69 @@
+# ============================================================
+# Python environment / cache
+# ============================================================
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+
+# ============================================================
+# IDE / OS
+# ============================================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ============================================================
+# Secrets
+# ============================================================
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# ============================================================
+# Large/raw experiment outputs
+# ============================================================
+/results/
+/test_results/
+
+baseline_results/*predictions.npy
+baseline_results/*truth.npy
+
+# Keep compact baseline evidence
+!baseline_results/*.json
+!baseline_results/*.pth
+
+# ============================================================
+# Checkpoints
+# Ignore local experiment checkpoints by default.
+# We will force-add only the deployment checkpoint.
+# ============================================================
+/checkpoints/
+
+# ============================================================
+# Submission/package artifacts
+# ============================================================
+/submission/
+/submission_validation/
+/submission_cleanroom/
+XLinear_Assignment_Submission.zip
+
+# ============================================================
+# Temporary/generated files
+# ============================================================
+*.tmp
+*.log
+result.txt
+
+# Microsoft Office temporary files
+~$*
+
+# Report conversion intermediates
+report/final/XLinear_Assignment_Report_export.md
+report/final/reference.docx

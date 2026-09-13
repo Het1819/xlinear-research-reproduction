@@ -1,0 +1,23 @@
+{
+  "baseline": "Persistence",
+  "dataset": "Weather",
+  "target": "OT",
+  "features": "MS",
+  "seq_len": 96,
+  "pred_len": 96,
+  "test_windows": 10432,
+  "mse": 0.0012442638192729396,
+  "mae": 0.02484384345710038,
+  "rmse": 0.03527412393345779,
+  "mape": 0.5693239324841975,
+  "mspe": 2.115833058300539,
+  "rse": 0.829450782462585,
+  "corr": 0.44767660452415003,
+  "nse": 0.3120113994722056,
+  "kge": 0.6559378365284457,
+  "r2": 0.3120113994722056,
+  "xlinear_local_mse": 0.001319668721407652,
+  "xlinear_local_mae": 0.026476873084902763,
+  "mse_relative_improvement_percent": -6.060202102378383,
+  "mae_relative_improvement_percent": -6.573176290626094
+}

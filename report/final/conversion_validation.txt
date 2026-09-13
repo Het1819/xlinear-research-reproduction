@@ -1,0 +1,46 @@
+==================================================
+FINAL REPORT EXPORT CONVERSION VALIDATION RECORD
+==================================================
+
+SOURCE MARKDOWN
+Path: report\XLinear_Assignment_Report.md
+SHA-256: b8c887a170a5a953ebdf32c941f4b9c8b0b90cd5044f47444062efca059a85a6
+
+EXPORT-ONLY MARKDOWN COMPATIBILITY
+Path: report\final\XLinear_Assignment_Report_export.md
+Content Changes: None (zero changes to scientific content, wording, or numbers)
+Formatting Adjustments: Converted 8 ASCII table fences to native Markdown pipe tables; resolved relative figure paths for report/final/.
+
+DOCX ARTIFACT
+Path: report\final\XLinear_Assignment_Report.docx
+SHA-256: 0f58301be6ed4af2776783b71054a89b6557ea666171cd33261e8d2494ad862c
+File size: 292,216 bytes
+Paragraph count: 401
+Native table count: 8
+Embedded media items: 5 / 5
+Critical numbers validation: PASS
+Embedded images validation: PASS
+
+PDF ARTIFACT
+Path: report\final\XLinear_Assignment_Report.pdf
+SHA-256: 67c9f8b0e6801935153ac439c03db2776b515cce754b92fa8338f86653a5fe4e
+File size: 435,780 bytes
+Page count: 20
+Critical numbers validation: PASS
+
+FIGURES
+5/5 embedded in DOCX media archive and rendered in PDF:
+  1. analysis/results/weather_ablation_local_metrics.png
+  2. analysis/results/weather_ablation_mse_vs_paper.png
+  3. analysis/results/weather_ablation_mae_vs_paper.png
+  4. analysis/results/weather_ablation_parameters.png
+  5. analysis/results/weather_ablation_runtime.png
+
+BIBLIOGRAPHIC METADATA VERIFICATION
+Authors: Xinyang Chen, Huidong Jin, Yu Huang, Zaiwen Feng
+Title: XLinear: A Lightweight and Accurate MLP-Based Model for Long-Term Time Series Forecasting with Exogenous Inputs
+Venue: Proceedings of the AAAI Conference on Artificial Intelligence, 40(24), 20325-20335 (2026)
+DOI: 10.1609/aaai.v40i24.39121
+Status: VERIFIED EXACT
+
+OVERALL CONVERSION STATUS: PASS
