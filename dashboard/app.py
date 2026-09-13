@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+from pathlib import Path
 from types import SimpleNamespace
 import streamlit as st
 import numpy as np
@@ -8,9 +9,9 @@ import torch
 import matplotlib.pyplot as plt
 
 # Ensure repository root is on sys.path
-REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if REPO_ROOT not in sys.path:
-    sys.path.insert(0, REPO_ROOT)
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from models import XLinear
 from data_provider.data_factory import data_provider
@@ -24,12 +25,18 @@ st.set_page_config(
 
 # Constants
 CHECKPOINT_SETTING = "weather_96_96_XLinear_custom_ftMS_sl96_ll48_pl96_dm1024_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0"
-CHECKPOINT_PATH = os.path.join(REPO_ROOT, "checkpoints", CHECKPOINT_SETTING, "checkpoint.pth")
-DATASET_PATH = os.path.join(REPO_ROOT, "dataset", "weather.csv")
+CHECKPOINT_PATH = (
+    REPO_ROOT
+    / "checkpoints"
+    / CHECKPOINT_SETTING
+    / "checkpoint.pth"
+)
+DATASET_ROOT = REPO_ROOT / "dataset"
+DATASET_PATH = DATASET_ROOT / "weather.csv"
 
 @st.cache_resource
 def load_cached_model():
-    if not os.path.exists(CHECKPOINT_PATH):
+    if not CHECKPOINT_PATH.exists():
         st.error(f"Checkpoint file not found: {CHECKPOINT_PATH}")
         st.stop()
 
@@ -50,7 +57,7 @@ def load_cached_model():
 
     try:
         model = XLinear.Model(configs)
-        state_dict = torch.load(CHECKPOINT_PATH, map_location="cpu", weights_only=True)
+        state_dict = torch.load(str(CHECKPOINT_PATH), map_location="cpu", weights_only=True)
         model.load_state_dict(state_dict, strict=True)
         model.eval()
     except Exception as e:
@@ -64,13 +71,13 @@ def load_cached_model():
 
 @st.cache_resource
 def load_cached_test_dataset():
-    if not os.path.exists(DATASET_PATH):
+    if not DATASET_PATH.exists():
         st.error(f"Dataset not found at: {DATASET_PATH}")
         st.stop()
 
     args = SimpleNamespace(
         data='custom',
-        root_path=os.path.join(REPO_ROOT, 'dataset/'),
+        root_path=str(DATASET_ROOT) + os.sep,
         data_path='weather.csv',
         features='MS',
         target='OT',
@@ -217,7 +224,7 @@ def main():
 
     # Expandable Technical Information
     with st.expander("Technical details"):
-        st.markdown(f"- **Checkpoint:** `{os.path.basename(CHECKPOINT_PATH)}`")
+        st.markdown(f"- **Checkpoint:** `{CHECKPOINT_PATH.name}`")
         total_params = sum(p.numel() for p in model.parameters())
         st.markdown(f"- **Setting directory:** `{CHECKPOINT_SETTING}`")
         st.markdown(f"- **Model parameters:** {total_params:,}")
